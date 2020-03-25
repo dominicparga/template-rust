@@ -5,7 +5,7 @@ use template_rust::helpers;
 fn criterion_benchmark(c: &mut Criterion) {
     helpers::init_logging("WARN", vec![]).expect("No user-input, so this should be fine.");
 
-    c.bench_function("Do something", |b| b.iter(|| do_sth(black_box(1_000))));
+    c.bench_function("Do something", |b| b.iter(|| do_sth(black_box(1))));
 }
 
 criterion_group!(benches, criterion_benchmark);
