@@ -4,7 +4,7 @@ use template_rust::helpers;
 fn main() {
     // process user-input
     let matches = parse_cmdline();
-    match helpers::init_logging(matches.value_of("log").unwrap(), vec!["my_example"]) {
+    match helpers::init_logging(matches.value_of("log").unwrap(), vec!["my_playground"]) {
         Ok(_) => (),
         Err(msg) => {
             error!("{}", msg);

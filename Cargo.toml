@@ -31,6 +31,10 @@ name = 'my_binary' # bin/my_binary.rs
 name = "my_example"
 path = "examples/my_example.rs"
 
+[[example]]
+name = "my_playground"
+path = "examples/playground/my_playground.rs"
+
 
 [[bench]]
 name = "my_bench"
