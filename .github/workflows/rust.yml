@@ -95,6 +95,7 @@ jobs:
       env:
         CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
       run: |
+        cargo build
         cargo publish --token "${CRATES_TOKEN}"
         git tag --annotate "v$(cargo pkgid | cut -d# -f2 | cut -d: -f2)" --message='See CHANGELOG.md'
         git push --tags
