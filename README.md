@@ -45,7 +45,7 @@ has written this template.
 
 [crates.io/self]: https://crates.io/crates/template-rust
 [crates.io/self/badge]: https://img.shields.io/crates/v/template-rust?style=for-the-badge
-[docs.rs/self]: https://docs.rs/template-rust/0/
+[docs.rs/self]: https://docs.rs/template-rust/
 [docs.rs/self/badge]: https://img.shields.io/crates/v/template-rust?color=informational&label=docs&style=for-the-badge
 [github/dominicparga]: https://github.com/dominicparga
 [github/lesstat/cyclops/blob/README]: https://github.com/Lesstat/cyclops/blob/master/README.md#graph-data
