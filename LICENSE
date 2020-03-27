@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------
-                Copyright 2020 Dominic Parga Cacheiro
+                Copyright 2019 Dominic Parga Cacheiro
 ------------------------------------------------------------------------
 
 This repository and its content are licensed under the Apache License,
@@ -16,15 +16,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-Mentioning the License in own projects
+Mentioning this Copyright in own projects
 
-Please include this Copyright-notice in your project. As suggested in
-the License, you may choose a separate file "NOTICE" for this.
+Please include this Copyright- and License-notice in your project. As
+suggested in the License, you may choose a separate file like "NOTICE"
+for this.
 
 
 Short description of some content
 
-Describe your project here for better overview in large projects.
+The repository "osmgraphing" parses maps of own format or maps from
+openstreetmap. To do this, a binary "osmgraphing" is built and an own-
+defined config-file can be provided to specify parser- and routing-
+settings. Besides that, a binary "mapgenerator" is built and can be used
+to generate map-files.
 
 
 ------------------------------------------------------------------------
