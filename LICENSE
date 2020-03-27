@@ -1,8 +1,11 @@
-Copyright 2020 Dominic Parga Cacheiro
+------------------------------------------------------------------------
+                Copyright 2020 Dominic Parga Cacheiro
+------------------------------------------------------------------------
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+This repository and its content are licensed under the Apache License,
+Version 2.0 (the "License"). You may not use content of this repository
+or its files except in compliance with the License. You may obtain a
+copy of the License at
 
     http://www.apache.org/licenses/LICENSE-2.0
 
@@ -13,6 +16,19 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-Purpose
+Mentioning the License in own projects
 
-Explain the purpose of your project here.
+Please include this Copyright-notice in your project. As suggested in
+the License, you may choose a separate file "NOTICE" for this.
+
+
+Short description of some content
+
+Describe your project here for better overview in large projects.
+
+
+------------------------------------------------------------------------
+        Copyright-notices of Dependencies (expect Dev-Dependencies)
+------------------------------------------------------------------------
+
+...
