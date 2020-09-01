@@ -1,46 +1,86 @@
 use log::{error, info};
-use template_rust::helpers;
+use std::convert::TryFrom;
+use template_rust::defaults;
+use template_rust::helpers::{err, init_logging};
 
 fn main() {
-    // process user-input
-    let matches = parse_cmdline();
-    match helpers::init_logging(matches.value_of("log").unwrap(), vec![]) {
-        Ok(_) => (),
+    let args = match parse_cmdline() {
+        Ok(args) => args,
         Err(msg) => {
-            error!("{}", msg);
-            return;
+            println!("ERROR: {}", msg);
+            println!();
+            panic!()
         }
     };
-
-    info!("Hello! Execute 'cargo run -- --help' for more details.");
+    let result = init_logging(&args.max_log_level, &["my_binary"]);
+    if let Err(msg) = result {
+        error!("{}{}", msg, "\n");
+        panic!("{}", msg);
+    }
+    let result = run(args);
+    if let Err(msg) = result {
+        error!("{}{}", msg, "\n");
+        panic!("{}", msg);
+    }
 }
 
-fn parse_cmdline<'a>() -> clap::ArgMatches<'a> {
-    // arg: quiet
-    let tmp = &[
-        "Sets the logging-level by setting environment-variable 'RUST_LOG'.",
-        "The env-variable 'RUST_LOG' has precedence.",
-        "It takes values of modules, e.g.",
-        "export RUST_LOG='warn,my_example=info'",
-        "for getting warn's by default, but 'info' about the others",
-    ]
-    .join("\n");
-    let arg_log_level = clap::Arg::with_name("log")
-        .long("log")
-        .short("l")
-        .value_name("FILTER-LEVEL")
-        .help(tmp)
-        .takes_value(true)
-        .required(false)
-        .default_value("INFO")
-        .possible_values(&vec!["TRACE", "DEBUG", "INFO", "WARN", "ERROR"]);
+fn run(_args: CmdlineArgs) -> err::Feedback {
+    info!("Executing binary: my_binary");
+    info!("Hello!");
+    info!("Your constant from compile-time is {}", defaults::FOO);
+    info!("To change this, add a suffix 'FOO=41 cargo run ...'");
+    info!("Execute 'cargo run --bin my_binary -- --help' for more details.");
+    Ok(())
+}
 
-    // all
-    clap::App::new(env!("CARGO_PKG_NAME"))
+fn parse_cmdline<'a>() -> err::Result<CmdlineArgs> {
+    let args = clap::App::new(env!("CARGO_PKG_NAME"))
         .version(env!("CARGO_PKG_VERSION"))
         .author(env!("CARGO_PKG_AUTHORS"))
         .about(env!("CARGO_PKG_DESCRIPTION"))
-        .long_about((&["", "Here could stand your help-message."].join("\n")).as_ref())
-        .arg(arg_log_level)
-        .get_matches()
+        .long_about("TODO Some description of the binary's purpose.");
+
+    let args = {
+        let arg_log_level = clap::Arg::with_name(constants::ids::MAX_LOG_LEVEL)
+            .long("log")
+            .short("l")
+            .value_name("FILTER-LEVEL")
+            .help(
+                "Sets the logging-level according to the env-variable 'RUST_LOG'. The env-variable \
+                'RUST_LOG' has precedence. It takes values of modules, e.g. export RUST_LOG='warn,\
+                osmgraphing=info' for getting warn's by default, but 'info' about the others",
+            )
+            .takes_value(true)
+            .required(false)
+            .case_insensitive(true)
+            .default_value("INFO")
+            .possible_values(&vec!["TRACE", "DEBUG", "INFO", "WARN", "ERROR"]);
+        args.arg(arg_log_level)
+    };
+
+    CmdlineArgs::try_from(args.get_matches())
+}
+
+mod constants {
+    pub mod ids {
+        pub const MAX_LOG_LEVEL: &str = "max-log-level";
+    }
+}
+
+struct CmdlineArgs {
+    max_log_level: String,
+}
+
+impl<'a> TryFrom<clap::ArgMatches<'a>> for CmdlineArgs {
+    type Error = err::Msg;
+
+    fn try_from(matches: clap::ArgMatches<'a>) -> err::Result<CmdlineArgs> {
+        let max_log_level = matches
+            .value_of(constants::ids::MAX_LOG_LEVEL)
+            .expect(&format!("cmdline-arg: {}", constants::ids::MAX_LOG_LEVEL));
+
+        Ok(CmdlineArgs {
+            max_log_level: String::from(max_log_level),
+        })
+    }
 }

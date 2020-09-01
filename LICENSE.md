@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and limitations 
 
 Please include this Copyright- and License-notice in your project.
 As suggested in the License, you may choose a separate file like "NOTICE" for this.
-Instead of copying the whole notice, you may copy only the following short version.
+Instead of copying the whole file, you may copy only the following short version.
 
 ```text
 template-rust

@@ -1,51 +1,54 @@
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [package]
-name = "template-rust" # lib.rs
-default-run = "my_binary" # bin/my_binary.rs
+name = 'template-rust'
+default-run = 'my_binary'
 # Changing this version in a branch 'release' and pushing it to
 # GitHub will lead to publishing it automatically to crates.io.
 # Hence do not forget updating Unreleased in CHANGELOG.md.
-version = "0.0.0" # !!!
-description = "Description"
-edition = "2018"
+version = '0.0.0' # !!!
+description = 'Description'
+edition = '2018'
 
 authors = [
-    "Parga Cacheiro, Dominic (dominic.parga@gmail.com)",
+    'Parga Cacheiro, Dominic (dominic.parga@gmail.com)',
 ]
-repository = "https://github.com/dominicparga/template-rust"
-readme = "README.md"
-keywords = ["", "", "", "", ""]
-categories = ["", "", "", ""]
-license = "Apache-2.0"
+repository = 'https://github.com/dominicparga/template-rust'
+readme = 'README.md'
+keywords = ['', '', '', '', '']
+categories = ['', '', '', '']
+license = 'Apache-2.0'
 
 
 [features]
+default = []
 
 
 [[bin]]
-name = 'my_binary' # bin/my_binary.rs
+name = 'my_binary'
+path = 'src/bin/my_binary.rs'
 
 
 [[example]]
-name = "my_example"
-path = "examples/my_example.rs"
+name = 'my_example'
+path = 'examples/my_example.rs'
+
 
 [[example]]
-name = "my_playground"
-path = "examples/playground/my_playground.rs"
+name = 'my_playground'
+path = 'examples/playground/my_playground.rs'
 
 
 [[bench]]
-name = "my_bench"
+name = 'my_bench'
 harness = false
 
 
 [dependencies]
-clap = "2.33" # cmdline-parsing
-env_logger = "0.6" # logging for external use, e.g. main.rs and examples
-log = "0.4"        # logging for internal use, e.g. lib.rs
+clap = '2.33' # cmdline-parsing
+env_logger = '0.6' # logging for external use, e.g. main.rs and examples
+log = '0.4' # logging for internal use, e.g. lib.rs
 
 
 [dev-dependencies]
-criterion = "0.3" # benchmarking
+criterion = '0.3' # benchmarking

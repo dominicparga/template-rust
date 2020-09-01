@@ -27,10 +27,7 @@ This section helps to remind everyone including myself, why I am not on version 
 Rust has a build-tool called `cargo`, which can be used to run everything except scripts in `scripts/`.
 
 ```zsh
-# Just executing some easy cargo-build-commands
-./scripts/build.sh
-# Execute the binary
-./target/release/my_binary
+cargo run --release --bin my_binary
 ```
 
 
