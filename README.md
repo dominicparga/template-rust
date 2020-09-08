@@ -16,7 +16,7 @@ Goal of this repo is to provide a quick setup for rust-projects.
 
 ## Reason for `version < 1.0.0`
 
-I hate all those projects staying with version `< 1.0.0` forever.
+I don't like all those projects staying with version `< 1.0.0` forever.
 This section helps to remind everyone including myself, why I am not on version `1.0.0` yet, or whether I should already be above.
 
 
